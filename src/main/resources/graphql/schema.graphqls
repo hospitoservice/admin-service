@@ -1,0 +1,220 @@
+type Query {
+    allEmployees: [Employee]
+    employeeById(id: ID!): Employee
+}
+
+type Mutation {
+    createEmployee(employee: EmployeeInput!): Employee
+    updateEmployee(id: ID!, employee: EmployeeInput!): Employee
+    deleteEmployee(id: ID!): Boolean
+}
+
+type Employee {
+    id: ID
+    personalDetails: PersonalDetails
+    employmentDetails: EmploymentDetails
+    contactDetails: ContactDetails
+    addresses: [Address]
+    documentDetails: DocumentDetails
+    payrollDetails: PayrollDetails
+    hasPortalAccess: Boolean
+    username: String
+    roles: [String]
+    permissions: [String]
+    lastLogin: String
+    createdAt: String
+    updatedAt: String
+    createdBy: String
+    updatedBy: String
+    remarks: String
+}
+
+input EmployeeInput {
+    personalDetails: PersonalDetailsInput
+    employmentDetails: EmploymentDetailsInput
+    contactDetails: ContactDetailsInput
+    addresses: [AddressInput]
+    documentDetails: DocumentDetailsInput
+    payrollDetails: PayrollDetailsInput
+    hasPortalAccess: Boolean
+    username: String
+    password: String
+    roles: [String]
+    permissions: [String]
+    remarks: String
+}
+
+type PersonalDetails {
+    firstName: String
+    middleName: String
+    lastName: String
+    fullName: String
+    photoUrl: String
+    dateOfBirth: String
+    gender: String
+    bloodGroup: String
+    maritalStatus: String
+    nationality: String
+    languagesKnown: [String]
+}
+
+input PersonalDetailsInput {
+    firstName: String!
+    middleName: String
+    lastName: String
+    fullName: String
+    photoUrl: String
+    dateOfBirth: String
+    gender: String
+    bloodGroup: String
+    maritalStatus: String
+    nationality: String
+    languagesKnown: [String]
+}
+
+type EmploymentDetails {
+    employeeId: String!
+    role: String
+    department: String
+    designation: String
+    specialization: String
+    subSpecialization: String
+    workLocation: String
+    reportingManagerId: String
+    employmentType: String
+    joiningDate: String
+    probationEndDate: String
+    confirmationDate: String
+    employmentStatus: String
+    exitDate: String
+    exitReason: String
+    allowedShiftTypes: [String]
+    maxWeeklyHours: Int
+    onCallAvailability: Boolean
+}
+
+input EmploymentDetailsInput {
+    employeeId: String!
+    role: String
+    department: String
+    designation: String
+    specialization: String
+    subSpecialization: String
+    workLocation: String
+    reportingManagerId: String
+    employmentType: String
+    joiningDate: String
+    probationEndDate: String
+    confirmationDate: String
+    employmentStatus: String
+    exitDate: String
+    exitReason: String
+    allowedShiftTypes: [String]
+    maxWeeklyHours: Int
+    onCallAvailability: Boolean
+}
+
+type ContactDetails {
+    email: String!
+    phone: String!
+    secondaryPhone: String
+    emergencyContactName: String
+    emergencyContactRelation: String
+    emergencyContactPhone: String
+}
+
+input ContactDetailsInput {
+    email: String!
+    phone: String!
+    secondaryPhone: String
+    emergencyContactName: String
+    emergencyContactRelation: String
+    emergencyContactPhone: String
+}
+
+type Address {
+    line1: String!
+    line2: String
+    city: String!
+    state: String!
+    country: String!
+    postalCode: String!
+    type: AddressType!
+}
+
+input AddressInput {
+    line1: String!
+    line2: String
+    city: String!
+    state: String!
+    country: String!
+    postalCode: String!
+    type: AddressType!
+}
+
+enum AddressType {
+    PRESENT
+    PERMANENT
+}
+
+type DocumentDetails {
+    aadhaarNumber: String
+    panNumber: String
+    passportNumber: String
+    licenseNumber: String
+    licenseValidTill: String
+    registrationCouncil: String
+    registrationNumber: String
+    taxIdNumber: String
+    medicalFitnessCertificateUrl: String
+    backgroundVerificationStatus: String
+    certifications: [String]
+    accreditationTrainingCompleted: Boolean
+    offerLetterUrl: String
+    employmentContractUrl: String
+    experienceCertificates: [String]
+    idCardUrl: String
+}
+
+input DocumentDetailsInput {
+    aadhaarNumber: String
+    panNumber: String
+    passportNumber: String
+    licenseNumber: String
+    licenseValidTill: String
+    registrationCouncil: String
+    registrationNumber: String
+    taxIdNumber: String
+    medicalFitnessCertificateUrl: String
+    backgroundVerificationStatus: String
+    certifications: [String]
+    accreditationTrainingCompleted: Boolean
+    offerLetterUrl: String
+    employmentContractUrl: String
+    experienceCertificates: [String]
+    idCardUrl: String
+}
+
+type PayrollDetails {
+    bankAccountNumber: String
+    bankName: String
+    ifscCode: String
+    paymentMode: String
+    baseSalary: Float
+    allowances: Float
+    deductions: Float
+    pfNumber: String
+    esiNumber: String
+}
+
+input PayrollDetailsInput {
+    bankAccountNumber: String
+    bankName: String
+    ifscCode: String
+    paymentMode: String
+    baseSalary: Float
+    allowances: Float
+    deductions: Float
+    pfNumber: String
+    esiNumber: String
+}
