@@ -37,7 +37,7 @@ class EmployeeServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        employeeService = new EmployeeServiceImpl(employeeRepository, passwordEncoder);
+        employeeService = new EmployeeServiceImpl(employeeRepository);
         
         // Setup test employee
         testEmployee = new Employee();

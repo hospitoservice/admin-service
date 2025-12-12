@@ -5,7 +5,7 @@ import com.hospitoservice.admin.model.Employee;
 import com.hospitoservice.admin.repository.EmployeeRepository;
 import com.hospitoservice.admin.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,12 +16,10 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, PasswordEncoder passwordEncoder) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -50,9 +48,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         
         // Encode password if provided
-        if (employee.getPassword() != null) {
-            employee.setPassword(passwordEncoder.encode(employee.getPassword()));
-        }
+//        if (employee.getPassword() != null) {
+//            employee.setPassword(passwordEncoder.encode(employee.getPassword()));
+//        }
         
         employee.setCreatedAt(LocalDateTime.now());
         employee.setUpdatedAt(LocalDateTime.now());
